@@ -100,7 +100,30 @@
 
 (defn get-search []
   [:div {:class "search-input"}
-  [:h1 "Search hooked up"]])
+  [:h1 "Search hooked up"]
+   [:p 
+   (str "address" @street)
+   ]]
+  ; this function will ultimately pull in all of the data points together to make the api call
+  )
+
+
+(def street (atom nil))
+; value for the street address.
+
+(def street2 (atom nil))
+; value for street 2 address
+
+(def city (atom nil))
+; value for the city field
+
+(def state (atom nil))
+; value for the state
+
+(defn parseAddress []
+; if I had more time this function would take in the separate parts of the address- make lowercase the city and build out an API function
+)
+
 
 
 (defn address-form [_]
@@ -113,12 +136,14 @@
      [:label {:for "street-field"} "Street:"]
      [:input {:id "street-field"
               :type "text"
-              :name "street"}]]
+              :name "street"
+              :on-change #(reset! street (-> % .-target .-value))}]]
     [:div
      [:label {:for "street-2-field"} "Street 2:"]
      [:input {:id "street-2-field"
               :type "text"
-              :name "street-2"}]]
+              :name "street-2"
+              :on-change #(reset! street2 (-> % .-target .-value))}]]
     [:div
      [:label {:for "city-field"} "City:"]
      [:input {:id "city-field"
