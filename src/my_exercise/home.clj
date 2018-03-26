@@ -11,6 +11,8 @@
    [:title "Find my next election"]
    [:link {:rel "stylesheet" :href "default.css"}]])
 
+
+
 (defn getting-started [_]
   [:div {:class "getting-started"}
    [:h1 "Getting started"]
@@ -96,6 +98,11 @@
    (ocd-id-explainer request)
    (current-elections-link request)])
 
+(defn get-search []
+  [:div {:class "search-input"}
+  [:h1 "Search hooked up"]])
+
+
 (defn address-form [_]
   [:div {:class "address-form"}
    [:h1 "Find my next election"]
@@ -136,3 +143,7 @@
    (header request)
    (instructions request)
    (address-form request)))
+
+(defn search-terms [request]
+  (html5
+  (get-search)))
